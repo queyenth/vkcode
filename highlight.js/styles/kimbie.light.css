@@ -1,0 +1,93 @@
+/*
+    Name:     Kimbie (light)
+    Author:   Jan T. Sott
+    License:  Creative Commons Attribution-ShareAlike 4.0 Unported License
+    URL:      https://github.com/idleberg/Kimbie-highlight.js
+*/
+
+/* Kimbie Comment */
+.hljs-comment {
+  color: #a57a4c;
+}
+
+/* Kimbie Red */
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.hljs-meta,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-name,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: #dc3958;
+}
+
+/* Kimbie Orange */
+.hljs-number,
+.hljs-preprocessor,
+.hljs-built_in,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-constant {
+  color: #f79a32;
+}
+
+/* Kimbie Yellow */
+.hljs-title,
+.hljs-section,
+.css .hljs-rule .hljs-attribute {
+  color: #f06431;
+}
+
+/* Kimbie Green */
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.hljs-symbol,
+.xml .hljs-cdata {
+  color: #889b4a;
+}
+
+/* Kimbie Aqua */
+.css .hljs-hexcolor {
+  color: #088649;
+}
+
+/* Kimbie Blue */
+.python .hljs-decorator,
+.perl .hljs-sub {
+  color: #8ab1b0;
+}
+
+/* Kimbie Purple */
+.hljs-keyword,
+.hljs-name,
+.javascript .hljs-function {
+  color: #98676a;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #fbebd4;
+  color: #84613d;
+  padding: 0.5em;
+  -webkit-text-size-adjust: none;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}

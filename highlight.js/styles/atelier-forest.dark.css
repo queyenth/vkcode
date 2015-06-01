@@ -1,0 +1,89 @@
+/* Base16 Atelier Forest Dark - Theme */
+/* by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/forest) */
+/* Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16) */
+
+/* Atelier-Forest Comment */
+.hljs-comment {
+  color: #9c9491;
+}
+
+/* Atelier-Forest Red */
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.ruby .hljs-constant,
+.hljs-tag .hljs-name,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: #f22c40;
+}
+
+/* Atelier-Forest Orange */
+.hljs-number,
+.hljs-preprocessor,
+.hljs-meta,
+.hljs-built_in,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-constant {
+  color: #df5320;
+}
+
+/* Atelier-Forest Yellow */
+.css .hljs-rule .hljs-attribute {
+  color: #c38418;
+}
+
+/* Atelier-Forest Green */
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.hljs-symbol,
+.xml .hljs-cdata {
+  color: #7b9726;
+}
+
+/* Atelier-Forest Aqua */
+.hljs-title,
+.hljs-section,
+.css .hljs-hexcolor {
+  color: #3d97b8;
+}
+
+/* Atelier-Forest Blue */
+.hljs-name,
+.python .hljs-decorator,
+.perl .hljs-sub {
+  color: #407ee7;
+}
+
+/* Atelier-Forest Purple */
+.hljs-keyword {
+  color: #6666ea;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #1b1918;
+  color: #a8a19f;
+  padding: 0.5em;
+  -webkit-text-size-adjust: none;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}

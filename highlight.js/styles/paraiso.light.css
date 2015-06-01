@@ -1,0 +1,91 @@
+/*
+    Paraíso (light)
+    Created by Jan T. Sott (http://github.com/idleberg)
+    Inspired by the art of Rubens LP (http://www.rubenslp.com.br)
+*/
+
+/* Paraíso Comment */
+.hljs-comment {
+  color: #776e71;
+}
+
+/* Paraíso Red */
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.hljs-meta,
+.ruby .hljs-constant,
+.hljs-tag .hljs-name,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: #ef6155;
+}
+
+/* Paraíso Orange */
+.hljs-number,
+.hljs-preprocessor,
+.hljs-built_in,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-constant {
+  color: #f99b15;
+}
+
+/* Paraíso Yellow */
+.hljs-title,
+.hljs-section,
+.css .hljs-rule .hljs-attribute {
+  color: #fec418;
+}
+
+/* Paraíso Green */
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.hljs-symbol,
+.xml .hljs-cdata {
+  color: #48b685;
+}
+
+/* Paraíso Aqua */
+.css .hljs-hexcolor {
+  color: #5bc4bf;
+}
+
+/* Paraíso Blue */
+.python .hljs-decorator,
+.perl .hljs-sub {
+  color: #06b6ef;
+}
+
+/* Paraíso Purple */
+.hljs-keyword,
+.hljs-name {
+  color: #815ba4;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #e7e9db;
+  color: #4f424c;
+  padding: 0.5em;
+  -webkit-text-size-adjust: none;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}
