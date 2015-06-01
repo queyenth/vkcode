@@ -1,0 +1,97 @@
+/*
+
+Dark style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #444;
+  -webkit-text-size-adjust: none;
+}
+
+.hljs-keyword,
+.hljs-literal,
+.hljs-change,
+.hljs-winutils,
+.hljs-flow,
+.tex .hljs-special,
+.hljs-section {
+  color: white;
+}
+
+.hljs,
+.hljs-subst {
+  color: #ddd;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-name,
+.hljs-type,
+.hljs-tag .hljs-value,
+.css .hljs-rule .hljs-value,
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-symbol,
+.hljs-built_in,
+.django .hljs-template_tag,
+.django .hljs-variable,
+.ruby .hljs-string,
+.django .hljs-filter .hljs-argument,
+.smalltalk .hljs-localvars,
+.smalltalk .hljs-array,
+.hljs-attr_selector,
+.hljs-pseudo,
+.hljs-addition,
+.hljs-stream,
+.hljs-envvar,
+.hljs-variable,
+.tex .hljs-command,
+.hljs-prompt,
+.coffeescript .hljs-attribute {
+  color: #d88;
+}
+
+.hljs-comment,
+.hljs-annotation,
+.hljs-decorator,
+.hljs-pi,
+.hljs-doctype,
+.hljs-deletion,
+.hljs-shebang,
+.hljs-meta,
+.tex .hljs-formula {
+  color: #777;
+}
+
+.hljs-keyword,
+.hljs-literal,
+.hljs-title,
+.hljs-section,
+.css .hljs-id,
+.hljs-doctag,
+.hljs-type,
+.vbscript .hljs-built_in,
+.rsl .hljs-built_in,
+.diff .hljs-header,
+.hljs-chunk,
+.hljs-winutils,
+.bash .hljs-variable,
+.tex .hljs-special,
+.hljs-request,
+.hljs-status {
+  font-weight: bold;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}

@@ -1,0 +1,48 @@
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: white;
+  color: black;
+  -webkit-text-size-adjust: none;
+}
+
+.hljs-string,
+.hljs-variable,
+.hljs-symbol,
+.hljs-section,
+.hljs-tag .hljs-value,
+.hljs-filter .hljs-argument,
+.hljs-addition,
+.hljs-change,
+.tex .hljs-formula {
+  color: #888;
+}
+
+.hljs-comment,
+.hljs-meta,
+.hljs-shebang,
+.hljs-doctype,
+.hljs-pi,
+.hljs-deletion {
+  color: #ccc;
+}
+
+.hljs-keyword,
+.hljs-section,
+.hljs-name,
+.hljs-type,
+.css .hljs-tag,
+.hljs-winutils,
+.hljs-flow,
+.tex .hljs-command,
+.hljs-request,
+.hljs-status {
+  font-weight: bold;
+}
