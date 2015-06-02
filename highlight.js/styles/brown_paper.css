@@ -95,3 +95,14 @@ Brown Paper style from goldblog.com.ua (c) Zaripov Yura <yur4ik7@ukr.net>
 .xml .hljs-cdata {
   opacity: 0.8;
 }
+.hljs-line-numbers {
+	text-align: right;
+	border-right: 1px solid #ccc;
+	color: #999;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}

@@ -140,3 +140,14 @@ XCode style (c) Angel Garcia <angelgarcia.mail@gmail.com>
 .method .hljs-id {
   color: #000;
 }
+.hljs-line-numbers {
+	text-align: right;
+	border-right: 1px solid #ccc;
+	color: #999;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
