@@ -3,20 +3,21 @@
 // @namespace   vkcode
 // @description VK Code Highlighter
 // @author      Queyenth
-// @include     *vk.com/*
+// @include     *vk.com/im*
 // @version     1
 // @grant       none
 // ==/UserScript==
 
 // Replace 12 with any size you want
-var FONT_SIZE = 'font-size: 12px';
+var FONT_SIZE = 'font-size: 10px';
 // Replace monospace with your favourite font
-var FONT_FAMILY = 'font-family: consolas';
+var FONT_FAMILY = "font-family: 'monaco for powerline'";
+//
+var TAB_TO_SPACE = "  ";
 
-// Available themes: default, solarized_dark, solarized_light, github,
-// railscasts, monokai_sublime, mono-blue, tomorrow, color-brewer, zenburn
+// List of all themes: https://github.com/queyenth/vkcode/tree/gh-pages/highlight.js/styles
 var THEME = 'mono-blue';
-var TAB_TO_SPACE = 2;
+
 
 // Creating a new stylesheet
 var sheet = (function() {
@@ -65,16 +66,23 @@ function initCssRules() {
   addCSSRule(sheet, '.hljs', 'padding: 1em !important;');
 }
 
+function parseMessage(block) {
+  if ($(block).html().indexOf("&lt;/code&gt;") === -1) $(block).html($(block).html() + "<br>");
+  $(block).html($(block).html().replace("&lt;code&gt;<br>", "<pre><code>").replace("&lt;/code&gt;", "</code></pre>"));
+  $(block).html($(block).html().replace(/\\t( )*/g, TAB_TO_SPACE));
+  // TODO: replace all smiles, and remove all links, << >> etc
+}
+
 function highlightBlock(block) {
   if ($(block).html().indexOf("&lt;code&gt;<br>") > -1) {
-    console.log(block);
-    $(block).html($(block).html().replace("&lt;code&gt;<br>", "<pre><code>").replace("&lt;/code&gt;", "</code></pre>"));
+    parseMessage(block);
     hljs.highlightBlock($(block).children('pre').children('code')[0]);
+    hljs.lineNumbersBlock($(block).children('pre').children('code')[0]);
   }
 }
 
 function getImFromTr(trblock) {
-  return $(trblock).children('.im_log_body').children('.wrapped').children('.im_msg_text')[0];
+  return $(trblock).find('.im_msg_text');
 }
 
 function IMMutationObserver() {
@@ -82,7 +90,10 @@ function IMMutationObserver() {
     function(mutations) {
       mutations.forEach(function(mutation) {
         for (var i = 0; i < mutation.addedNodes.length; i++) {
-          highlightBlock(getImFromTr(mutation.addedNodes[i]));
+          var msg = getImFromTr(mutation.addedNodes[i]);
+          msg.each(function(i, block) {
+            highlightBlock(block);
+          });
         }
       });
     }
@@ -97,27 +108,29 @@ function highlightAllBlocksOnPage() {
   });
 }
 
-function highlight() {
-  var observer = IMMutationObserver();
-  hljs.configure({useBR: true, tabReplace: '  '});
-  console.log($('.im_log_t tbody:visible')[0]);
-  highlightAllBlocksOnPage();
-  $(".im_tab, .im_tab_selected").on("click", function() {
-    window.setTimeout(function() {
-      highlightAllBlocksOnPage();
-      observer.disconnect();
-      observer = IMMutationObserver();
-    }, 500);
-    //window.setTimeout(observer.observe($('.im_log_t tbody:visible')[0], {childList: true}), 500);
-  });
-}
-
-var jqueryloaded = function() {
+loadScript("https://code.jquery.com/jquery-2.1.4.min.js", function() {
   $(document).ready(function() {
-    loadCss("https://highlightjs.org/static/styles/"+THEME+".css");
+    loadCss("https://queyenth.github.io/vkcode/highlight.js/styles/"+THEME+".css");
     initCssRules();
-    loadScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js", highlight);
+    loadScript("https://queyenth.github.io/vkcode/highlight.js/highlight.pack.js", function() {
+      loadScript("https://queyenth.github.io/vkcode/highlight.js/highlightjs-line-numbers.min.js", function() {        
+        var observer = IMMutationObserver();
+        hljs.configure({useBR: true, tabReplace: '  '});
+        highlightAllBlocksOnPage();
+        window.setTimeout(function() {
+          $("#im_dialogs").on("click", ".dialogs_row", function() {
+            console.log("pressed chat!");
+          });
+        }, 500);
+        $(".im_tab, .im_tab_selected").on("click", function() {
+          console.log("pressed chat!");
+          window.setTimeout(function() {
+            highlightAllBlocksOnPage();
+            observer.disconnect();
+            observer = IMMutationObserver();
+          }, 500);
+        });
+      });
+    });
   });
-}
-
-loadScript("https://code.jquery.com/jquery-2.1.4.min.js", jqueryloaded);
+});
