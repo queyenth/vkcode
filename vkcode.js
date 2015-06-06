@@ -16,72 +16,8 @@ var FONT_FAMILY = "font-family: 'monaco for powerline'";
 var TAB_TO_SPACE = "  ";
 
 // List of all themes: https://github.com/queyenth/vkcode/tree/gh-pages/highlight.js/styles
-//var THEME = 'agate';
-//var THEME = 'androidstudio';
-//var THEME = 'arta';
-//var THEME = 'ascetic';
-//var THEME = 'atelier-cave.dark';
-//var THEME = 'atelier-cave.light';
-//var THEME = 'atelier-dune.dark';
-//var THEME = 'atelier-dune.light';
-//var THEME = 'atelier-estuary.dark';
-//var THEME = 'atelier-estuary.light';
-//var THEME = 'atelier-forest.dark';
-//var THEME = 'atelier-forest.light';
-//var THEME = 'atelier-heath.dark';
-//var THEME = 'atelier-heath.light';
-//var THEME = 'atelier-lakeside.dark';
-//var THEME = 'atelier-lakeside.light';
-//var THEME = 'atelier-plateau.dark';
-//var THEME = 'atelier-plateau.light';
-//var THEME = 'atelier-savanna.dark';
-//var THEME = 'atelier-savanna.light';
-//var THEME = 'atelier-seaside.dark';
-//var THEME = 'atelier-seaside.light';
-//var THEME = 'atelier-sulphurpool.dark';
-//var THEME = 'atelier-sulphurpool.light';
-//var THEME = 'brown_paper';
-//var THEME = 'brown_papersq.png';
-//var THEME = 'codepen-embed';
-//var THEME = 'color-brewer';
-//var THEME = 'dark';
-//var THEME = 'darkula';
-//var THEME = 'default';
-//var THEME = 'docco';
-//var THEME = 'far';
-//var THEME = 'foundation';
-//var THEME = 'github';
-//var THEME = 'github-gist';
-//var THEME = 'googlecode';
-//var THEME = 'hybrid';
-//var THEME = 'idea';
-//var THEME = 'ir_black';
-//var THEME = 'kimbie.dark';
-//var THEME = 'kimbie.light';
-//var THEME = 'magula';
 var THEME = 'mono-blue';
-//var THEME = 'monokai';
-//var THEME = 'monokai_sublime';
-//var THEME = 'obsidian';
-//var THEME = 'paraiso.dark';
-//var THEME = 'paraiso.light';
-//var THEME = 'pojoaque';
-//var THEME = 'pojoaque.jpg';
-//var THEME = 'railscasts';
-//var THEME = 'rainbow';
-//var THEME = 'school_book';
-//var THEME = 'school_book.png';
-//var THEME = 'solarized_dark';
-//var THEME = 'solarized_light';
-//var THEME = 'sunburst';
-//var THEME = 'tomorrow';
-//var THEME = 'tomorrow-night-blue';
-//var THEME = 'tomorrow-night-bright';
-//var THEME = 'tomorrow-night';
-//var THEME = 'tomorrow-night-eighties';
-//var THEME = 'vs';
-//var THEME = 'xcode';
-//var THEME = 'zenburn';
+
 
 // Creating a new stylesheet
 var sheet = (function() {
@@ -188,26 +124,23 @@ function highlightAllBlocksOnPage() {
 }
 
 loadScript("https://code.jquery.com/jquery-2.1.4.min.js", function() {
+  var inChat = false;
   $(document).ready(function() {
     loadCss("https://queyenth.github.io/vkcode/highlight.js/styles/"+THEME+".css");
     initCssRules();
     loadScript("https://queyenth.github.io/vkcode/highlight.js/highlight.pack.js", function() {
       loadScript("https://queyenth.github.io/vkcode/highlight.js/highlightjs-line-numbers.min.js", function() {
         var checkIfChatPage = window.setInterval(function() {
-          if ($(".im_tab_selected:visible").length) {
+          if ($(".im_tab_selected:visible").length && !inChat) {
+            inChat = true;
             var observer = IMMutationObserver();
             hljs.configure({useBR: true, tabReplace: '  '});
             highlightAllBlocksOnPage();
-            window.setTimeout(function() {
-              $("#im_dialogs").on("click", ".dialogs_row", function() {
-                console.log("pressed chat!");
-              });
-            }, 500);
             $(".im_tab, .im_tab_selected").on("click", function() {
-              console.log("pressed chat!");
               window.setTimeout(function() {
                 highlightAllBlocksOnPage();
                 observer.disconnect();
+                //observer.observe($('.im_log_t tbody:visible')[0] {childList: true});
                 observer = IMMutationObserver();
               }, 500);
             });
@@ -217,6 +150,9 @@ loadScript("https://code.jquery.com/jquery-2.1.4.min.js", function() {
                 replaceTabs();
               }
             });
+          }
+          else {
+            inChat = false;
           }
         }, 500);
       });
