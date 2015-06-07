@@ -66,8 +66,32 @@ function initCssRules() {
   addCSSRule(sheet, '.hljs', 'padding: 1em !important;');
 }
 
+function replaceSmiles(block) {
+  var smiles = {};
+  smiles['D83DDE0A'] = ":-)"; smiles['D83DDE06'] = "xD"; smiles['D83DDE12'] = ":-("; smiles['D83DDE28'] = ":O";
+  smiles['D83DDE03'] = ":-D"; smiles['D83DDE09'] = ";-)"; smiles['D83DDE1C'] = ";-P"; smiles['D83DDE0B'] = ":-p";
+  smiles['D83DDE0D'] = "8-)"; smiles['D83DDE0E'] = "B-)"; smiles['D83DDE0F'] = ";-]"; smiles['D83DDE14'] = "3(";
+  smiles['D83DDE22'] = ":'("; smiles['D83DDE2D'] = ":_("; smiles['D83DDE29'] = ":(("; smiles['D83DDE10'] = ":|";
+  smiles['D83DDE0C'] = "3-)"; smiles['D83DDE07'] = "O:)"; smiles['D83DDE30'] = ";o"; smiles['2764'] = "<3";
+  smiles['D83DDE32'] = "8o"; smiles['D83DDE33'] = "8|"; smiles['D83DDE37'] = ":X"; smiles['D83DDE1A'] = ":-*";
+  smiles['D83DDE20'] = ">)"; smiles['D83DDE21'] = ">))"; smiles['D83DDE08'] = "}-)"; smiles['D83DDC4D'] = ":like:";
+  smiles['D83DDC4E'] = ":dislike:"; smiles['261D'] = ":up:"; smiles['270C'] = ":v:"; smiles['D83DDC4C'] = ":ok:";
+  $(block).find('.emoji_css').each(function(i, block) {
+    block.outerHTML = smiles[$(block).attr('emoji')];
+  });
+}
+
+function replaceSpecialChars(block) {
+  $(block).find('a').each(function(i, block) {
+    block.outerHTML = block.innerHTML;
+  });
+  $(block).html($(block).html().replace(/»/g, ">>").replace(/«/g, "<<"));
+}
+
 function createActualHTML(block) {
-  $(block).html($(block).html().replace("&lt;code&gt;<br>", "<pre><code>").replace("&lt;/code&gt;", "</code></pre>"));
+  $(block).html($(block).html().replace("&lt;vkcode&gt;<br>", "<pre><code>").replace("&lt;/vkcode&gt;", "</code></pre>"));
+  replaceSpecialChars(block);
+  replaceSmiles(block);
 }
 
 function replaceTabs() {
@@ -82,14 +106,14 @@ function replaceTabs() {
 }
 
 function parseMessage(block) {
-  if ($(block).html().indexOf("&lt;/code&gt;") === -1) $(block).html($(block).html() + "<br>");
+  if ($(block).html().indexOf("&lt;/vkcode&gt;") === -1) $(block).html($(block).html() + "<br>");
   createActualHTML(block);
   $(block).html($(block).html().replace(/\\t( )*/g, TAB_TO_SPACE));
   // TODO: replace all smiles, and remove all links, << >> etc
 }
 
 function highlightBlock(block) {
-  if ($(block).html().indexOf("&lt;code&gt;<br>") > -1) {
+  if ($(block).html().indexOf("&lt;vkcode&gt;<br>") > -1) {
     parseMessage(block);
     hljs.highlightBlock($(block).children('pre').children('code')[0]);
     hljs.lineNumbersBlock($(block).children('pre').children('code')[0]);
@@ -147,7 +171,7 @@ loadScript("https://code.jquery.com/jquery-2.1.4.min.js", function() {
             $(".im_editable").on("keydown", function(event) {
               if (event.which == 13) {
                 //event.preventDefault();
-                replaceTabs();
+                //replaceTabs();
               }
             });
           }
