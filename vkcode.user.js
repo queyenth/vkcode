@@ -3,8 +3,10 @@
 // @namespace   vkcode
 // @description VK Code Highlighter
 // @author      Queyenth
+// @icon        https://raw.github.com/queyenth/vkcode/master/Icon.png
+// @updateURL   https://raw.github.com/queyenth/vkcode/master/vkcode.user.js
 // @include     *vk.com/*
-// @version     1
+// @version     1.0
 // @grant       none
 // ==/UserScript==
 
