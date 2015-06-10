@@ -13,13 +13,12 @@
 // Replace 12 with any size you want
 var FONT_SIZE = 'font-size: 10px';
 // Replace monospace with your favourite font
-var FONT_FAMILY = "font-family: 'monaco for powerline'";
+var FONT_FAMILY = "font-family: monospace";
 //
 var TAB_TO_SPACE = "  ";
 
 // List of all themes: https://github.com/queyenth/vkcode/tree/gh-pages/highlight.js/styles
 var THEME = 'mono-blue';
-
 
 // Creating a new stylesheet
 var sheet = (function() {
