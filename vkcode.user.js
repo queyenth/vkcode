@@ -14,6 +14,8 @@
 var FONT_SIZE = 'font-size: 10px';
 // Replace monospace with your favourite font
 var FONT_FAMILY = "font-family: monospace";
+// Width control css rules
+var ADDITIONAL_CSS_RULES = 'width: 45em';
 //
 var TAB_TO_SPACE = "  ";
 
@@ -61,6 +63,7 @@ function addCSSRule(sheet, selector, rules, index) {
 
 function initCssRules() {
   addCSSRule(sheet, 'pre', FONT_FAMILY);
+  addCSSRule(sheet, 'pre', ADDITIONAL_CSS_RULES);
   addCSSRule(sheet, 'pre code', FONT_FAMILY);
   addCSSRule(sheet, 'pre', FONT_SIZE);
   addCSSRule(sheet, 'pre', 'margin: 0;');
